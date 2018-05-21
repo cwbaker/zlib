@@ -39,6 +39,10 @@
 #  include <io.h>
 #endif
 
+#if defined(__clang__) && defined(__APPLE__)
+#  include <unistd.h>
+#endif
+
 #if defined(_WIN32)
 #  define WIDECHAR
 #endif
