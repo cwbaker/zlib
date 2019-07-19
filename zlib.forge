@@ -1,12 +1,12 @@
 
-for _, forge in forge:builds('cc.*') do 
-    local forge = forge:inherit {
+for _, toolset in toolsets('cc.*') do 
+    local toolset = toolset:inherit {
         warning_level = 0;
     };
 
-    forge:all {
-        forge:StaticLibrary '${lib}/zlib_${platform}_${architecture}' {
-            forge:Cc '${obj}/%1' {
+    toolset:all {
+        toolset:StaticLibrary '${lib}/zlib_${platform}_${architecture}' {
+            toolset:Cc '${obj}/%1' {
                 defines = { 
                     'verbose=-1' 
                 };
