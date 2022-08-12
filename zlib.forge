@@ -1,15 +1,15 @@
 
-for _, toolset in toolsets('cc.*') do 
-    local toolset = toolset:inherit {
+for _, cc in toolsets('^cc.*') do 
+    local cc = cc:inherit {
         warning_level = 0;
+        defines = { 
+            'verbose=-1' 
+        };
     };
 
-    toolset:all {
-        toolset:StaticLibrary '${lib}/zlib_${platform}_${architecture}' {
-            toolset:Cc '${obj}/%1' {
-                defines = { 
-                    'verbose=-1' 
-                };
+    cc:all {
+        cc:StaticLibrary '${lib}/zlib_${platform}_${architecture}' {
+            cc:Cc '${obj}/%1' {
                 'adler32.c',
                 'compress.c',
                 'crc32.c',
